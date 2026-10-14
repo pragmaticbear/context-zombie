@@ -18,14 +18,17 @@ const BONE = 'rgb(230,225,205)'
 // percent -> rows of [char, color]: orange -> green -> bloody dark green,
 // then from 65% bone spreads from the top-left of the head until all skeleton at 90%.
 const zombie = (p: number): [string, string][][] => {
-  const skin = p < 30 ? 'claude' : p < 55 ? 'rgb(120,190,90)' : 'rgb(70,130,60)'
+  const skin = p < 30 ? 'rgb(217,119,87)' : p < 55 ? 'rgb(120,190,90)' : 'rgb(70,130,60)'
   const blood = p < 30 ? 0 : Math.min(0.6, (p - 30) / 60) // share of cells gone red
   const reach = p < 65 ? -1 : (p - 65) / 25 + 0.1 // bone front, 0 = top-left, 1 = bottom-right
   return LOGO.map((row, r) =>
     [...row].map((ch, c): [string, string] => {
       if (ch === ' ') return [ch, skin]
       if ((c + r * 2) / 12 < reach) return [ch, BONE]
-      if (rnd(r, c) < blood) return [r < 2 && rnd(c, r) < 0.5 ? '▒' : ch, 'rgb(170,20,20)']
+      if (rnd(r, c) < blood) {
+        // scorched cell: solid dark red (what ▒ looked like), other blood cells bright red
+        return r < 2 && rnd(c, r) < 0.5 ? ['█', 'rgb(107,25,25)'] : [ch, 'rgb(170,20,20)']
+      }
       return [ch, skin]
     }),
   )
