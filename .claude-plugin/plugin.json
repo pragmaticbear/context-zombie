@@ -1,0 +1,7 @@
+{
+  "name": "context-zombie",
+  "version": "0.1.0",
+  "description": "Claude logo above the prompt that decays as context fills, and heals on compact or clear",
+  "author": { "name": "Brandon" },
+  "types": "./types/state.d.ts"
+}

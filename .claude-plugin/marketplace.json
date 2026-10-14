@@ -1,0 +1,12 @@
+{
+  "name": "pragmaticbear-mods",
+  "description": "Claude Code terminal mods",
+  "owner": { "name": "Brandon" },
+  "plugins": [
+    {
+      "name": "context-zombie",
+      "source": "./",
+      "description": "Claude logo above the prompt that turns zombie, then skeleton, as context fills"
+    }
+  ]
+}
