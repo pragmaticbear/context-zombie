@@ -18,7 +18,7 @@ const BONE = 'rgb(230,225,205)'
 // percent -> rows of [char, color]: orange -> green -> bloody dark green,
 // then from 65% bone spreads from the top-left of the head until all skeleton at 90%.
 const zombie = (p: number): [string, string][][] => {
-  const skin = p < 30 ? 'rgb(217,119,87)' : p < 55 ? 'rgb(120,190,90)' : 'rgb(70,130,60)'
+  const skin = p < 30 ? 'claude' : p < 55 ? 'rgb(120,190,90)' : 'rgb(70,130,60)'
   const blood = p < 30 ? 0 : Math.min(0.6, (p - 30) / 60) // share of cells gone red
   const reach = p < 65 ? -1 : (p - 65) / 25 + 0.1 // bone front, 0 = top-left, 1 = bottom-right
   return LOGO.map((row, r) =>
@@ -74,8 +74,7 @@ export const register: Register = on => {
     return out
   })
 
-  on('ui.render', { component: 'AbovePrompt' }, async ($, e, next) => {
-    if (e.props.hasSurvey) return next(e)
+  on('ui.render', { component: 'PromptHint' }, async ($, e, next) => {
     const p = await read($, percent)
     const { Box, Text } = $.ui.resolve(e)
     const rows = zombie(p)
