@@ -16,7 +16,7 @@ It heals when you `/compact` or `/clear`. Test with `/zombie 0-100`, reset with 
 ## Install
 
 ```
-/plugin install context-zombie --marketplace pragmaticbear/context-zombie
+/plugin install context-zombie --marketplace thepragmaticbear/context-zombie
 ```
 
 Answer `y` to add the marketplace, then pick the user scope.
